@@ -38,3 +38,11 @@ python manage.py runserver
 - All set up, you can now use the url  **http://127.0.0.1:8000/** to access the app from your development server. 🤗
 
 - The API docs and relevant endpoints will be availabe in GIU by accessing the URL on a browser.
+
+
+- #### running tests
+  After setting up your development environment
+  - run tests using the following command:
+  ```bash
+  ./manage.py test
+  ```
