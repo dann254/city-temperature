@@ -30,12 +30,13 @@ WEATHER_URL = os.environ.get("WEATHER_URL")
 API_KEY = os.environ.get("API_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
+DEBUG = False
+
 if os.environ.get("CURRENT_ENV") == 'development' or os.environ.get("CURRENT_ENV") == 'testing':
     DEBUG = True
-else:
-    DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['city-temperature-api.herokuapp.com', '127.0.0.1', "localhost"]
 
 
 # Application definition
@@ -136,5 +137,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
