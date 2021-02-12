@@ -23,12 +23,27 @@ cd city-temperature-api
 ```bash
 pip install -r requirements.txt
 ```
+- Create a **postgreSQL** database:
+```bash
+createdb city_temp_db
+```
+ *- follow appropriate tutorials for other DB managers*
 
+- signup for an `API_KEY` here [https://www.weatherbit.io/](https://www.weatherbit.io/)
 
 - Create a **.env** file in the project the directory (**city-temperature-api/api/**) with the following format.
 ```bash
   export CURRENT_ENV="development"
   export SECRET_KEY="your-secret-key"
+  export API_KEY="weatherbit.io_api_key"
+  export WEATHER_URL="https://api.weatherbit.io/v2.0/forecast/daily"
+  export DB_URL="postgres:///cities"
+```
+- instructions for setting up `DB_URL` on other recomended DB managers are found [Here](https://github.com/jacobian/dj-database-url#url-schema).
+
+- Run migrations from the project root directory to update the database
+```bash
+python manage.py migrate
 ```
 
 - To start the app, run:

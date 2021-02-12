@@ -19,16 +19,16 @@ from rest_framework import routers
 from api.locations import views
 
 router = routers.DefaultRouter()
-# router.register(r'locations', views.LocationsViewSet, basename='locations')
-location_list = views.LocationsViewSet.as_view({'get':'list'})
-location_detail = views.LocationsViewSet.as_view({'get':'retrieve'})
+router.register(r'locations', views.LocationsViewSet, basename='locations')
+# location_list = views.LocationsViewSet.as_view({'get':'list'})
+# location_detail = views.LocationsViewSet.as_view({'get':'retrieve'})
 
 urlpatterns = [
     path('', include(router.urls)),
 
     #LOCATION URLS
-    path('locations/', location_list, name='locations-list'),
-    path('locations/<str:message>/<int:days>', location_detail, name='locations-detail')
+    # path('locations/', location_list, name='locations-list'),
+    # path('locations/<str:message>/<int:days>', location_detail, name='locations-detail')
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # path('api/locations/', views.LocationsView.as_view(), name="locations")
 ]
