@@ -5,6 +5,15 @@
 
 Know city temperature for a given city for a period of time.
 
+## Relevant links
+
+- [staging](https://city-temperature-api.herokuapp.com/locations/Herat/?days=1)
+
+#Tade offs/ upgrades
+- Api keys https://www.weatherapi.com/ don't work so I had to spend time finding another appropriate weather Api
+- The weather API used requires city and country to be specified in request so a database of cities and their country was added.
+- Some city names exist in multiple countries so users are directed to specify country i.e `/api/locations/London/?days=1&country=Canada`
+
 ## How to set up
 - Make sure you have **python3** installed.
 - Install **virtualenv** and **virtualenvwrapper** or use suitable alternatives to create a virtual environment.
