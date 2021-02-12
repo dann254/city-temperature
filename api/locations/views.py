@@ -23,12 +23,27 @@ class LocationsViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
         if not name:
             return Response({"errors": [{"field": "name", "message": "City name cannot be empty"}]}, status=status.HTTP_400_BAD_REQUEST)
 
+        # alternative query for cities with same names
+        country = self.request.query_params.get('country')
+
         name = name.replace('_', ' ')
-        city = City.objects.get(name__iexact=name)
+        if not country:
+
+            cities = City.objects.filter(name__iexact=name)
+            if len(cities) > 1:
+                return Response({"errors": [{"field": "name", "message": "Multiple cities have that name, specify country in request i.e add &country=Country Name"}]}, status=status.HTTP_400_BAD_REQUEST)
+            elif len(cities)==1:
+                city = cities[0]
+            else:
+                city = None
+
+        else:
+            city = City.objects.get(name__iexact=name, country__iexact=country)
 
         if not city:
             return Response({"errors": [{"field": "name", "message": "City name not found"}]}, status=status.HTTP_404_NOT_FOUND)
-        # city = get_object_or_404(queryset, name=name)
+
+
         days = self.request.query_params.get('days')
         if days:
             try:
