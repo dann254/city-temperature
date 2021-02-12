@@ -1,4 +1,6 @@
 
+[![Build Status](https://travis-ci.com/dann254/city-temperature-api.svg?branch=master)](https://travis-ci.com/dann254/city-temperature-api)
+
 # CITY TEMPERATURE - [API]
 
 Know city temperature for a given city for a period of time.
