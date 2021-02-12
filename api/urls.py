@@ -19,7 +19,7 @@ from rest_framework import routers
 from api.locations import views
 
 router = routers.DefaultRouter()
-router.register(r'locations', views.LocationsViewSet, basename='locations')
+router.register(r'api/locations', views.LocationsViewSet, basename='locations')
 # location_list = views.LocationsViewSet.as_view({'get':'list'})
 # location_detail = views.LocationsViewSet.as_view({'get':'retrieve'})
 

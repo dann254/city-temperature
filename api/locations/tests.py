@@ -9,7 +9,7 @@ class LocationsTest(APITestCase):
     """ Test module for Locations"""
 
 
-    base_url = '/locations/'
+    base_url = '/api/locations/'
 
     def setUp(self):
         os.environ['CURRENT_ENV'] = 'testing'
