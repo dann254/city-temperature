@@ -30,7 +30,7 @@ WEATHER_URL = os.environ.get("WEATHER_URL")
 API_KEY = os.environ.get("API_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get("CURRENT_ENV") == 'development':
+if os.environ.get("CURRENT_ENV") == 'development' or os.environ.get("CURRENT_ENV") == 'testing':
     DEBUG = True
 else:
     DEBUG = False

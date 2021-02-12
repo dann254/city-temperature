@@ -1,3 +1,4 @@
+import os
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 
@@ -11,7 +12,7 @@ class LocationsTest(APITestCase):
     base_url = '/locations/'
 
     def setUp(self):
-        pass
+        os.environ['CURRENT_ENV'] = 'testing'
 
     def test_get_list_of_cities(self):
         """Test if user can get a list of cities"""
@@ -30,3 +31,17 @@ class LocationsTest(APITestCase):
         days = 3
         response = client.get(self.base_url + city + '/?days=' + str(days))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_non_existent_city(self):
+        """Test if non existent city returns no data"""
+        city = 'Grr'
+        days = 3
+        response = client.get(self.base_url + city + '/?days=' + str(days))
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_duplicate_city(self):
+        """Test if cities with multiple names request for user to specify country"""
+        city = 'London'
+        days = 3
+        response = client.get(self.base_url + city + '/?days=' + str(days))
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
